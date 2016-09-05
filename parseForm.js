@@ -51,7 +51,7 @@
         exclude: []
     };
 
-    //公共的格式化 方法. 默认是加粗，用户可以通过覆盖该方法达到不同的格式化效果。
+    //公共的格式化 方法.用户可以通过覆盖该方法。
     $.fn.parseForm.encodeTextEnter = function(text) {
         if (!text || typeof text != 'string') return text;
         return text.trim().replace(/[\n]/g, '<br/>');
