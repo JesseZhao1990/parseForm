@@ -3,8 +3,10 @@
 ##用法
 1. 引入parseForm.js
 2. 使用
+
 ```
+
     $form.parseForm()      //$form jquery对象 
     
 ```   
-parseForm()默认会把checkboxs和disabled的value也取到。若想排除。需传入参数["disabled","checkbox"]
+parseForm()默认会把checkboxs和disabled的value也取到。若想排除。需传入参数{exclude：["disabled","checkbox"]}
