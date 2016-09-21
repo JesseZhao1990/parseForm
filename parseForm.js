@@ -1,4 +1,3 @@
-
 //闭包限定命名空间
 (function ($) {
     $.fn.extend({
@@ -32,13 +31,32 @@
                         $thisForm.find('input:disabled, select:disabled').each(function (i, obj) {
                             obj.name && fields.push({name : obj.name, value : obj.value});
                         });
+
             });
 
-            if (!fields.length) return null;
+            //把重复的key合并
+            var fieldsCombined = {};
+            $.each(fields,function(){
+            	var self = this;
+
+            	if(fieldsCombined.hasOwnProperty(self.name)){
+            		fieldsCombined[self.name].push(self.value);
+            	}else{
+					fieldsCombined[self.name]=[];
+					fieldsCombined[self.name].push(self.value);
+            	}
+
+            })
+
+            if ($.isEmptyObject(fieldsCombined)) return null;
 
             var result = {};
-            $.each(fields, function(i, obj) { 
-                result[obj.name] = $.fn.parseForm.encodeTextEnter(obj.value);
+            $.each(fieldsCombined, function(name,value) { 
+            	if(value.length>1){
+            		result[name] = $.fn.parseForm.encodeTextEnter(value);
+            	}else{
+            		result[name] = $.fn.parseForm.encodeTextEnter(value.join());
+            	}
             });
 
             return result;
