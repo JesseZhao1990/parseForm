@@ -42,8 +42,8 @@
             	if(fieldsCombined.hasOwnProperty(self.name)){
             		fieldsCombined[self.name].push(self.value);
             	}else{
-					fieldsCombined[self.name]=[];
-					fieldsCombined[self.name].push(self.value);
+			fieldsCombined[self.name]=[];
+			fieldsCombined[self.name].push(self.value);
             	}
 
             })
